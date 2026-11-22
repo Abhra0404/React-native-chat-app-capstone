@@ -4,15 +4,16 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { ThemeContext } from "../context/ThemeContext";
 
-export default function ChattyLogo({ compact = false }) {
+export default function ChattyLogo({ compact = false, horizontal = false }) {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, horizontal && styles.horizontalContainer]}>
       <View
         style={[
           styles.mark,
           compact && styles.markCompact,
+          horizontal && styles.markHorizontal,
           {
             backgroundColor: theme.primary,
             borderColor: theme.highlight,
@@ -42,6 +43,9 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
   },
+  horizontalContainer: {
+    flexDirection: "row",
+  },
   mark: {
     width: 72,
     height: 72,
@@ -55,6 +59,10 @@ const styles = StyleSheet.create({
     width: 58,
     height: 58,
     borderRadius: 19,
+  },
+  markHorizontal: {
+    marginBottom: 0,
+    marginRight: 10,
   },
   wordmark: {
     fontSize: 34,

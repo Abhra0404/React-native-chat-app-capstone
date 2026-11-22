@@ -15,6 +15,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import * as SecureStore from "expo-secure-store";
 
 import ChatBackground from "../components/ChatBackground";
+import ChattyLogo from "../components/ChattyLogo";
 import UserAvatar from "../components/UserAvatar";
 import GroupAvatar from "../components/GroupAvatar";
 
@@ -558,7 +559,7 @@ export default function ChatsScreen({ navigation }) {
         {/* Header */}
         <View style={styles.header}>
           <View>
-            <Text style={styles.logo}>Chatty</Text>
+            <ChattyLogo compact horizontal />
             <Text style={styles.subtitle}>Your conversations</Text>
           </View>
 

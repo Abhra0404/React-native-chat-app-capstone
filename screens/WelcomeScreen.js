@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import ChatBackground from "../components/ChatBackground";
+import ChattyLogo from "../components/ChattyLogo";
 import { ThemeContext } from "../context/ThemeContext";
 
 export default function WelcomeScreen({ navigation }) {
@@ -140,8 +141,7 @@ export default function WelcomeScreen({ navigation }) {
         </Pressable>
 
         <View style={styles.content}>
-          {/* Chatty logo */}
-          <Text style={styles.logo}>Chatty</Text>
+          <ChattyLogo compact />
 
           <Text style={styles.tagline}>Stay Connected. Stay Chatty.</Text>
 

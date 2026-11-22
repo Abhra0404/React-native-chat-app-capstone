@@ -14,6 +14,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import ChatBackground from "../components/ChatBackground";
+import ChattyLogo from "../components/ChattyLogo";
 import { ThemeContext } from "../context/ThemeContext";
 import { AuthContext } from "../context/AuthContext";
 import { apiRequest } from "../services/api";
@@ -255,12 +256,7 @@ export default function LoginScreen({ navigation }) {
           </Pressable>
 
           <View style={styles.content}>
-            <View style={styles.logoRow}>
-              <View style={styles.logoMark}>
-                <Ionicons name="chatbubble-ellipses" size={23} color="#FFFFFF" />
-              </View>
-              <Text style={styles.logo}>Chatty</Text>
-            </View>
+            <ChattyLogo compact horizontal />
             <Text style={styles.heading}>Welcome Back!</Text>
             <Text style={styles.description}>
               Login to continue your conversations.

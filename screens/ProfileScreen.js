@@ -10,6 +10,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import ChatBackground from "../components/ChatBackground";
+import ChattyLogo from "../components/ChattyLogo";
 import UserAvatar from "../components/UserAvatar";
 import { ThemeContext } from "../context/ThemeContext";
 import { AuthContext } from "../context/AuthContext";
@@ -194,7 +195,7 @@ export default function ProfileScreen({ navigation }) {
         </View>
 
         <View style={styles.footer}>
-          <Text style={styles.footerTitle}>Chatty</Text>
+          <ChattyLogo compact />
           <Text style={styles.footerDescription}>Stay Connected. Stay Chatty.</Text>
           <Text style={styles.version}>Version 1.0.0</Text>
         </View>
