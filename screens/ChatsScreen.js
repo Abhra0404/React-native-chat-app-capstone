@@ -14,7 +14,7 @@ import {
 import { useFocusEffect } from "@react-navigation/native";
 import * as SecureStore from "expo-secure-store";
 
-import OrbitalBackground from "../components/OrbitalBackground";
+import ChatBackground from "../components/ChatBackground";
 import UserAvatar from "../components/UserAvatar";
 import GroupAvatar from "../components/GroupAvatar";
 
@@ -553,7 +553,7 @@ export default function ChatsScreen({ navigation }) {
   }
 
   return (
-    <OrbitalBackground>
+    <ChatBackground>
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
@@ -649,6 +649,6 @@ export default function ChatsScreen({ navigation }) {
           <Text style={styles.newChatButtonText}>+</Text>
         </Pressable>
       </View>
-    </OrbitalBackground>
+    </ChatBackground>
   );
 }

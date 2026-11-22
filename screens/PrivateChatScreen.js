@@ -25,7 +25,7 @@ import {
 import { useFocusEffect } from "@react-navigation/native";
 import * as SecureStore from "expo-secure-store";
 
-import OrbitalBackground from "../components/OrbitalBackground";
+import ChatBackground from "../components/ChatBackground";
 import UserAvatar from "../components/UserAvatar";
 import ImagePicker from "../components/imagePicker/ImagePicker";
 import ImagePreview from "../components/imagePicker/ImagePreview";
@@ -760,7 +760,7 @@ export default function PrivateChatScreen({ navigation, route }) {
   }
 
   return (
-    <OrbitalBackground>
+    <ChatBackground>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -935,6 +935,6 @@ export default function PrivateChatScreen({ navigation, route }) {
           </View>
         </Modal>
       </KeyboardAvoidingView>
-    </OrbitalBackground>
+    </ChatBackground>
   );
 }

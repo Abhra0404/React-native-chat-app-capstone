@@ -35,10 +35,9 @@ const darkTheme = {
   tabActive: "#FFFFFF",
   tabInactive: "#B7CBDD",
 
-  // Orbital decorations
-  orbit: "rgba(168,207,242,0.18)",
-  star: "#FFFFFF",
-  planet: "#73A9D9",
+  // Chat background decorations
+  chatBubble: "rgba(168,207,242,0.16)",
+  chatBubbleDot: "rgba(255,255,255,0.38)",
 
   // Status colors
   success: "#65D6A0",
@@ -76,10 +75,9 @@ const lightTheme = {
   tabActive: "#3F78A8",
   tabInactive: "#93AABD",
 
-  // Orbital decorations
-  orbit: "rgba(115,169,217,0.18)",
-  star: "#73A9D9",
-  planet: "#A8CFF2",
+  // Chat background decorations
+  chatBubble: "rgba(63,120,168,0.13)",
+  chatBubbleDot: "rgba(63,120,168,0.32)",
 
   // Status colors
   success: "#218A60",

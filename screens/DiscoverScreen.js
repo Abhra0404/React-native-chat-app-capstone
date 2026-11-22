@@ -14,7 +14,7 @@ import {
 
 import * as SecureStore from "expo-secure-store";
 
-import OrbitalBackground from "../components/OrbitalBackground";
+import ChatBackground from "../components/ChatBackground";
 import UserAvatar from "../components/UserAvatar";
 
 import { ThemeContext } from "../context/ThemeContext";
@@ -496,7 +496,7 @@ export default function DiscoverScreen({ navigation }) {
   }
 
   return (
-    <OrbitalBackground>
+    <ChatBackground>
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
@@ -576,6 +576,6 @@ export default function DiscoverScreen({ navigation }) {
           />
         )}
       </View>
-    </OrbitalBackground>
+    </ChatBackground>
   );
 }

@@ -14,7 +14,7 @@ import {
 import * as SecureStore from "expo-secure-store";
 import { Ionicons } from "@expo/vector-icons";
 
-import OrbitalBackground from "../components/OrbitalBackground";
+import ChatBackground from "../components/ChatBackground";
 import { ThemeContext } from "../context/ThemeContext";
 import { apiRequest } from "../services/api";
 
@@ -156,7 +156,7 @@ export default function ChangePasswordScreen({ navigation }) {
   }
 
   return (
-    <OrbitalBackground>
+    <ChatBackground>
       <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === "ios" ? "padding" : undefined}>
         <ScrollView style={styles.container} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
           <View style={styles.header}>
@@ -201,6 +201,6 @@ export default function ChangePasswordScreen({ navigation }) {
           </Pressable>
         </ScrollView>
       </KeyboardAvoidingView>
-    </OrbitalBackground>
+    </ChatBackground>
   );
 }

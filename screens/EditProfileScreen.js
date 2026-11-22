@@ -15,7 +15,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-import OrbitalBackground from "../components/OrbitalBackground";
+import ChatBackground from "../components/ChatBackground";
 import openImagePicker from "../components/imagePicker/ImagePicker";
 import ImagePreview from "../components/imagePicker/ImagePreview";
 
@@ -320,7 +320,7 @@ export default function EditProfileScreen({ navigation, route }) {
   }
 
   return (
-    <OrbitalBackground>
+    <ChatBackground>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -470,6 +470,6 @@ export default function EditProfileScreen({ navigation, route }) {
           </Pressable>
         </ScrollView>
       </KeyboardAvoidingView>
-    </OrbitalBackground>
+    </ChatBackground>
   );
 }

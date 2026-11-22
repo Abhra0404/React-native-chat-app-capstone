@@ -12,7 +12,7 @@ import {
   ScrollView,
 } from "react-native";
 
-import OrbitalBackground from "../components/OrbitalBackground";
+import ChatBackground from "../components/ChatBackground";
 import { ThemeContext } from "../context/ThemeContext";
 import { apiRequest } from "../services/api";
 
@@ -256,7 +256,7 @@ export default function RegisterScreen({ navigation }) {
   }
 
   return (
-    <OrbitalBackground>
+    <ChatBackground>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -414,6 +414,6 @@ export default function RegisterScreen({ navigation }) {
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
-    </OrbitalBackground>
+    </ChatBackground>
   );
 }

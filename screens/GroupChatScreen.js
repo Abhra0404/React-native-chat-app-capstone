@@ -20,7 +20,7 @@ import {
 import { useFocusEffect } from "@react-navigation/native";
 import * as SecureStore from "expo-secure-store";
 
-import OrbitalBackground from "../components/OrbitalBackground";
+import ChatBackground from "../components/ChatBackground";
 import GroupAvatar from "../components/GroupAvatar";
 import ImagePicker from "../components/imagePicker/ImagePicker";
 import ImagePreview from "../components/imagePicker/ImagePreview";
@@ -1089,7 +1089,7 @@ setIsCreator(
   }
 
   return (
-    <OrbitalBackground>
+    <ChatBackground>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -1394,6 +1394,6 @@ setIsCreator(
           </View>
         </Modal>
       </KeyboardAvoidingView>
-    </OrbitalBackground>
+    </ChatBackground>
   );
 }

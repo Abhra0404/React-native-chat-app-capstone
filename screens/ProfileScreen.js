@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-import OrbitalBackground from "../components/OrbitalBackground";
+import ChatBackground from "../components/ChatBackground";
 import UserAvatar from "../components/UserAvatar";
 import { ThemeContext } from "../context/ThemeContext";
 import { AuthContext } from "../context/AuthContext";
@@ -95,7 +95,7 @@ export default function ProfileScreen({ navigation }) {
     : "";
 
   return (
-    <OrbitalBackground>
+    <ChatBackground>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.header}>
           <Text style={styles.heading}>Profile</Text>
@@ -199,6 +199,6 @@ export default function ProfileScreen({ navigation }) {
           <Text style={styles.version}>Version 1.0.0</Text>
         </View>
       </ScrollView>
-    </OrbitalBackground>
+    </ChatBackground>
   );
 }

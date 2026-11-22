@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { View, Text, StyleSheet, Pressable } from "react-native";
 
-import OrbitalBackground from "../components/OrbitalBackground";
+import ChatBackground from "../components/ChatBackground";
 import { ThemeContext } from "../context/ThemeContext";
 
 export default function WelcomeScreen({ navigation }) {
@@ -135,7 +135,7 @@ export default function WelcomeScreen({ navigation }) {
   });
 
   return (
-    <OrbitalBackground>
+    <ChatBackground>
       <View style={styles.container}>
         {/* Single Theme Toggle Button */}
         <Pressable style={styles.themeButton} onPress={toggleTheme}>
@@ -175,6 +175,6 @@ export default function WelcomeScreen({ navigation }) {
           </Pressable>
         </View>
       </View>
-    </OrbitalBackground>
+    </ChatBackground>
   );
 }

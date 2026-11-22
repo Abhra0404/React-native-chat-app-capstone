@@ -17,7 +17,7 @@ import {
 
 import * as SecureStore from "expo-secure-store";
 
-import OrbitalBackground from "../components/OrbitalBackground";
+import ChatBackground from "../components/ChatBackground";
 import { ThemeContext } from "../context/ThemeContext";
 import { apiRequest } from "../services/api";
 
@@ -406,7 +406,7 @@ export default function CreateGroupScreen({ navigation }) {
   }
 
   return (
-    <OrbitalBackground>
+    <ChatBackground>
       <KeyboardAvoidingView
         style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -551,6 +551,6 @@ export default function CreateGroupScreen({ navigation }) {
           </ScrollView>
         </View>
       </KeyboardAvoidingView>
-    </OrbitalBackground>
+    </ChatBackground>
   );
 }

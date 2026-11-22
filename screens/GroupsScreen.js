@@ -14,7 +14,7 @@ import {
 import { useFocusEffect } from "@react-navigation/native";
 import * as SecureStore from "expo-secure-store";
 
-import OrbitalBackground from "../components/OrbitalBackground";
+import ChatBackground from "../components/ChatBackground";
 import GroupAvatar from "../components/GroupAvatar";
 import { ThemeContext } from "../context/ThemeContext";
 import { AuthContext } from "../context/AuthContext";
@@ -362,7 +362,7 @@ export default function GroupsScreen({ navigation }) {
   });
 
   return (
-    <OrbitalBackground>
+    <ChatBackground>
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
@@ -445,6 +445,6 @@ export default function GroupsScreen({ navigation }) {
           <Text style={styles.createButtonText}>+</Text>
         </Pressable>
       </View>
-    </OrbitalBackground>
+    </ChatBackground>
   );
 }
