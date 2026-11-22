@@ -11,13 +11,14 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 import ChatBackground from "../components/ChatBackground";
 import { ThemeContext } from "../context/ThemeContext";
 import { apiRequest } from "../services/api";
 
 export default function RegisterScreen({ navigation }) {
-  const { theme } = useContext(ThemeContext);
+  const { theme, themeName, setThemeName } = useContext(ThemeContext);
 
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -28,6 +29,10 @@ export default function RegisterScreen({ navigation }) {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  function toggleTheme() {
+    setThemeName(themeName === "Dark" ? "Light" : "Dark");
+  }
 
   const styles = StyleSheet.create({
     scrollContent: {
@@ -57,6 +62,20 @@ export default function RegisterScreen({ navigation }) {
       lineHeight: 31,
       marginTop: -3,
     },
+    themeButton: {
+      position: "absolute",
+      top: 18,
+      right: 24,
+      zIndex: 1,
+      width: 44,
+      height: 44,
+      borderRadius: 22,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: theme.card,
+      borderWidth: 1,
+      borderColor: theme.border,
+    },
     content: {
       width: "100%",
       maxWidth: 480,
@@ -68,6 +87,20 @@ export default function RegisterScreen({ navigation }) {
       fontSize: 34,
       fontWeight: "800",
       letterSpacing: 5,
+    },
+    logoRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 10,
+    },
+    logoMark: {
+      width: 44,
+      height: 44,
+      borderRadius: 22,
+      backgroundColor: theme.primary,
+      alignItems: "center",
+      justifyContent: "center",
+      transform: [{ rotate: "-8deg" }],
     },
     tagline: {
       color: theme.secondaryText,
@@ -277,8 +310,26 @@ export default function RegisterScreen({ navigation }) {
             <Text style={styles.backText}>‹</Text>
           </Pressable>
 
+          <Pressable
+            onPress={toggleTheme}
+            style={styles.themeButton}
+            accessibilityRole="button"
+            accessibilityLabel={themeName === "Dark" ? "Switch to light theme" : "Switch to dark theme"}
+          >
+            <Ionicons
+              name={themeName === "Dark" ? "sunny-outline" : "moon-outline"}
+              size={21}
+              color={theme.text}
+            />
+          </Pressable>
+
           <View style={styles.content}>
-            <Text style={styles.logo}>Chatty</Text>
+            <View style={styles.logoRow}>
+              <View style={styles.logoMark}>
+                <Ionicons name="chatbubble-ellipses" size={23} color="#FFFFFF" />
+              </View>
+              <Text style={styles.logo}>Chatty</Text>
+            </View>
             <Text style={styles.tagline}>Stay Connected. Stay Chatty.</Text>
 
             <Text style={styles.heading}>Create Account</Text>

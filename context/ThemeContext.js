@@ -36,8 +36,8 @@ const darkTheme = {
   tabInactive: "#B7CBDD",
 
   // Chat background decorations
-  chatBubble: "rgba(168,207,242,0.16)",
-  chatBubbleDot: "rgba(255,255,255,0.38)",
+  chatBubble: "rgba(168,207,242,0.07)",
+  chatBubbleDot: "rgba(255,255,255,0.24)",
 
   // Status colors
   success: "#65D6A0",
@@ -76,8 +76,8 @@ const lightTheme = {
   tabInactive: "#93AABD",
 
   // Chat background decorations
-  chatBubble: "rgba(63,120,168,0.13)",
-  chatBubbleDot: "rgba(63,120,168,0.32)",
+  chatBubble: "rgba(63,120,168,0.05)",
+  chatBubbleDot: "rgba(63,120,168,0.20)",
 
   // Status colors
   success: "#218A60",

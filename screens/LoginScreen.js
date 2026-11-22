@@ -11,6 +11,7 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 import ChatBackground from "../components/ChatBackground";
 import { ThemeContext } from "../context/ThemeContext";
@@ -18,13 +19,17 @@ import { AuthContext } from "../context/AuthContext";
 import { apiRequest } from "../services/api";
 
 export default function LoginScreen({ navigation }) {
-  const { theme } = useContext(ThemeContext);
+  const { theme, themeName, setThemeName } = useContext(ThemeContext);
   const { login } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  function toggleTheme() {
+    setThemeName(themeName === "Dark" ? "Light" : "Dark");
+  }
 
   const styles = StyleSheet.create({
     container: {
@@ -48,11 +53,19 @@ export default function LoginScreen({ navigation }) {
       borderWidth: 1,
       borderColor: theme.border,
     },
-    backText: {
-      color: theme.text,
-      fontSize: 26,
-      fontWeight: "600",
-      lineHeight: 30,
+    themeButton: {
+      position: "absolute",
+      top: 18,
+      right: 24,
+      zIndex: 1,
+      width: 44,
+      height: 44,
+      borderRadius: 22,
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: theme.card,
+      borderWidth: 1,
+      borderColor: theme.border,
     },
     content: {
       width: "100%",
@@ -65,6 +78,20 @@ export default function LoginScreen({ navigation }) {
       fontWeight: "800",
       color: theme.text,
       letterSpacing: 4,
+    },
+    logoRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      gap: 10,
+    },
+    logoMark: {
+      width: 44,
+      height: 44,
+      borderRadius: 22,
+      backgroundColor: theme.primary,
+      alignItems: "center",
+      justifyContent: "center",
+      transform: [{ rotate: "-8deg" }],
     },
     heading: {
       fontSize: 27,
@@ -117,11 +144,6 @@ export default function LoginScreen({ navigation }) {
       paddingVertical: 13,
       color: theme.text,
       fontSize: 15,
-    },
-    showPassword: {
-      color: theme.highlight,
-      fontWeight: "bold",
-      fontSize: 12,
     },
     visibilityButton: {
       minWidth: 54,
@@ -216,11 +238,29 @@ export default function LoginScreen({ navigation }) {
             accessibilityRole="button"
             accessibilityLabel="Go back"
           >
-            <Text style={styles.backText}>‹</Text>
+            <Ionicons name="chevron-back" size={24} color={theme.text} />
+          </Pressable>
+
+          <Pressable
+            onPress={toggleTheme}
+            style={styles.themeButton}
+            accessibilityRole="button"
+            accessibilityLabel={themeName === "Dark" ? "Switch to light theme" : "Switch to dark theme"}
+          >
+            <Ionicons
+              name={themeName === "Dark" ? "sunny-outline" : "moon-outline"}
+              size={21}
+              color={theme.text}
+            />
           </Pressable>
 
           <View style={styles.content}>
-            <Text style={styles.logo}>Chatty</Text>
+            <View style={styles.logoRow}>
+              <View style={styles.logoMark}>
+                <Ionicons name="chatbubble-ellipses" size={23} color="#FFFFFF" />
+              </View>
+              <Text style={styles.logo}>Chatty</Text>
+            </View>
             <Text style={styles.heading}>Welcome Back!</Text>
             <Text style={styles.description}>
               Login to continue your conversations.
@@ -260,9 +300,11 @@ export default function LoginScreen({ navigation }) {
                   accessibilityLabel={showPassword ? "Hide password" : "Show password"}
                   hitSlop={8}
                 >
-                  <Text style={styles.showPassword}>
-                    {showPassword ? "Hide" : "Show"}
-                  </Text>
+                  <Ionicons
+                    name={showPassword ? "eye-off-outline" : "eye-outline"}
+                    size={21}
+                    color={theme.highlight}
+                  />
                 </Pressable>
               </View>
 

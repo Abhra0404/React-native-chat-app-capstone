@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import { View, Text, StyleSheet, Pressable } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 import ChatBackground from "../components/ChatBackground";
 import { ThemeContext } from "../context/ThemeContext";
@@ -36,12 +37,6 @@ export default function WelcomeScreen({ navigation }) {
       paddingVertical: 10,
       paddingHorizontal: 16,
       zIndex: 10,
-    },
-
-    themeButtonText: {
-      color: theme.text,
-      fontSize: 13,
-      fontWeight: "bold",
     },
 
     content: {
@@ -126,22 +121,22 @@ export default function WelcomeScreen({ navigation }) {
       zIndex: 10,
     },
 
-    themeButtonText: {
-      color: theme.text,
-      fontSize: 13,
-      fontWeight: "bold",
-      textAlign: "center",
-    },
   });
 
   return (
     <ChatBackground>
       <View style={styles.container}>
-        {/* Single Theme Toggle Button */}
-        <Pressable style={styles.themeButton} onPress={toggleTheme}>
-          <Text style={styles.themeButtonText}>
-            {themeName === "Dark" ? "☾ Dark" : "☀ Light"}
-          </Text>
+        <Pressable
+          style={styles.themeButton}
+          onPress={toggleTheme}
+          accessibilityRole="button"
+          accessibilityLabel={themeName === "Dark" ? "Switch to light theme" : "Switch to dark theme"}
+        >
+          <Ionicons
+            name={themeName === "Dark" ? "sunny-outline" : "moon-outline"}
+            size={21}
+            color={theme.text}
+          />
         </Pressable>
 
         <View style={styles.content}>
