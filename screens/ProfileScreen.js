@@ -7,6 +7,7 @@ import {
   Pressable,
   Alert,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
 import OrbitalBackground from "../components/OrbitalBackground";
 import UserAvatar from "../components/UserAvatar";
@@ -119,31 +120,37 @@ export default function ProfileScreen({ navigation }) {
         <Text style={styles.sectionTitle}>Account</Text>
         <View style={styles.settingsCard}>
           <Pressable style={styles.settingItem} onPress={() => navigation.navigate("ChangePassword")}>
-            <View style={styles.settingIcon}><Text style={styles.iconText}>Aa</Text></View>
+            <View style={styles.settingIcon}>
+              <Ionicons name="lock-closed-outline" size={20} color="#FFFFFF" />
+            </View>
             <View style={styles.settingDetails}>
               <Text style={styles.settingName}>Change Password</Text>
               <Text style={styles.settingDescription}>Update your account password</Text>
             </View>
-            <Text style={styles.arrow}>›</Text>
+            <Ionicons name="chevron-forward" size={22} color={theme.secondaryText} />
           </Pressable>
           <View style={styles.separator} />
           <Pressable
             style={styles.settingItem}
             onPress={() => navigation.navigate("EditProfile", { profile: user })}
           >
-            <View style={styles.settingIcon}><Text style={styles.iconText}>⚙</Text></View>
+            <View style={styles.settingIcon}>
+              <Ionicons name="settings-outline" size={20} color="#FFFFFF" />
+            </View>
             <View style={styles.settingDetails}>
               <Text style={styles.settingName}>Account Settings</Text>
               <Text style={styles.settingDescription}>Manage your profile information</Text>
             </View>
-            <Text style={styles.arrow}>›</Text>
+            <Ionicons name="chevron-forward" size={22} color={theme.secondaryText} />
           </Pressable>
         </View>
 
         <Text style={styles.sectionTitle}>Appearance</Text>
         <View style={styles.settingsCard}>
           <View style={styles.themeHeader}>
-            <View style={styles.settingIcon}><Text style={styles.iconText}>◐</Text></View>
+            <View style={styles.settingIcon}>
+              <Ionicons name="color-palette-outline" size={20} color="#FFFFFF" />
+            </View>
             <View style={styles.settingDetails}>
               <Text style={styles.settingName}>App Theme</Text>
               <Text style={styles.settingDescription}>Choose your preferred appearance</Text>
@@ -156,9 +163,16 @@ export default function ProfileScreen({ navigation }) {
                 style={[styles.themeButton, themeName === option && styles.activeTheme]}
                 onPress={() => setThemeName(option)}
               >
-                <Text style={[styles.themeButtonText, themeName === option && styles.activeThemeText]}>
-                  {option === "Light" ? "☀  Light" : "☾  Dark"}
-                </Text>
+                <View style={{ flexDirection: "row", alignItems: "center", gap: 7 }}>
+                  <Ionicons
+                    name={option === "Light" ? "sunny-outline" : "moon-outline"}
+                    size={17}
+                    color={themeName === option ? theme.buttonText : theme.text}
+                  />
+                  <Text style={[styles.themeButtonText, themeName === option && styles.activeThemeText]}>
+                    {option}
+                  </Text>
+                </View>
               </Pressable>
             ))}
           </View>
@@ -168,12 +182,14 @@ export default function ProfileScreen({ navigation }) {
         <Text style={styles.sectionTitle}>Session</Text>
         <View style={styles.settingsCard}>
           <Pressable style={styles.settingItem} onPress={handleLogout}>
-            <View style={styles.settingIcon}><Text style={styles.iconText}>↪</Text></View>
+            <View style={styles.settingIcon}>
+              <Ionicons name="log-out-outline" size={20} color="#FFFFFF" />
+            </View>
             <View style={styles.settingDetails}>
               <Text style={styles.logoutText}>Logout</Text>
               <Text style={styles.settingDescription}>Log out from this device</Text>
             </View>
-            <Text style={styles.arrow}>›</Text>
+            <Ionicons name="chevron-forward" size={22} color={theme.secondaryText} />
           </Pressable>
         </View>
 

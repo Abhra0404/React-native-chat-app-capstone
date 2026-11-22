@@ -12,6 +12,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import * as SecureStore from "expo-secure-store";
+import { Ionicons } from "@expo/vector-icons";
 
 import OrbitalBackground from "../components/OrbitalBackground";
 import { ThemeContext } from "../context/ThemeContext";
@@ -39,11 +40,21 @@ export default function ChangePasswordScreen({ navigation }) {
     backText: { color: theme.text, fontSize: 30, lineHeight: 36 },
     heading: { color: theme.text, fontSize: 25, fontWeight: "bold" },
     description: { color: theme.secondaryText, fontSize: 13, marginTop: 4 },
+    headingIcon: {
+      width: 42,
+      height: 42,
+      borderRadius: 12,
+      backgroundColor: theme.primary,
+      justifyContent: "center",
+      alignItems: "center",
+      marginRight: 12,
+    },
     infoCard: {
       backgroundColor: theme.card, borderWidth: 1, borderColor: theme.border,
       borderRadius: 16, padding: 17, marginBottom: 28,
     },
     infoTitle: { color: theme.text, fontSize: 15, fontWeight: "bold", marginBottom: 10 },
+    infoTitleRow: { flexDirection: "row", alignItems: "center", gap: 8, marginBottom: 10 },
     infoText: { color: theme.secondaryText, fontSize: 12, lineHeight: 22 },
     label: { color: theme.text, fontSize: 15, fontWeight: "bold", marginBottom: 9 },
     passwordContainer: {
@@ -53,6 +64,7 @@ export default function ChangePasswordScreen({ navigation }) {
     },
     passwordInput: { flex: 1, paddingVertical: 15, color: theme.text, fontSize: 14 },
     showButton: { color: theme.highlight, fontSize: 12, fontWeight: "bold", padding: 8 },
+    fieldIcon: { color: theme.placeholder, marginRight: 10 },
     saveButton: {
       backgroundColor: theme.button, borderWidth: 1, borderColor: theme.border,
       borderRadius: 13, paddingVertical: 15, alignItems: "center", marginTop: 10,
@@ -114,6 +126,12 @@ export default function ChangePasswordScreen({ navigation }) {
       <>
         <Text style={styles.label}>{label}</Text>
         <View style={styles.passwordContainer}>
+          <Ionicons
+            name="lock-closed-outline"
+            size={19}
+            color={theme.placeholder}
+            style={styles.fieldIcon}
+          />
           <TextInput
             style={styles.passwordInput}
             placeholder={placeholder}
@@ -126,7 +144,11 @@ export default function ChangePasswordScreen({ navigation }) {
             editable={!loading}
           />
           <Pressable onPress={() => setVisible(!visible)} disabled={loading} hitSlop={10}>
-            <Text style={styles.showButton}>{visible ? "Hide" : "Show"}</Text>
+            <Ionicons
+              name={visible ? "eye-off-outline" : "eye-outline"}
+              size={21}
+              color={theme.highlight}
+            />
           </Pressable>
         </View>
       </>
@@ -139,8 +161,11 @@ export default function ChangePasswordScreen({ navigation }) {
         <ScrollView style={styles.container} keyboardShouldPersistTaps="handled" showsVerticalScrollIndicator={false}>
           <View style={styles.header}>
             <Pressable style={styles.backButton} onPress={() => navigation.goBack()} disabled={loading}>
-              <Text style={styles.backText}>‹</Text>
+              <Ionicons name="chevron-back" size={26} color={theme.text} />
             </Pressable>
+            <View style={styles.headingIcon}>
+              <Ionicons name="lock-closed-outline" size={21} color="#FFFFFF" />
+            </View>
             <View>
               <Text style={styles.heading}>Change Password</Text>
               <Text style={styles.description}>Keep your Chatty account secure.</Text>
@@ -148,7 +173,10 @@ export default function ChangePasswordScreen({ navigation }) {
           </View>
 
           <View style={styles.infoCard}>
-            <Text style={styles.infoTitle}>Password requirements</Text>
+            <View style={styles.infoTitleRow}>
+              <Ionicons name="shield-checkmark-outline" size={19} color={theme.highlight} />
+              <Text style={styles.infoTitle}>Password requirements</Text>
+            </View>
             <Text style={styles.infoText}>• At least 8 characters</Text>
             <Text style={styles.infoText}>• New password must differ from your current password</Text>
             <Text style={styles.infoText}>• Both new password fields must match</Text>
@@ -159,7 +187,14 @@ export default function ChangePasswordScreen({ navigation }) {
           {renderPasswordField("Confirm New Password", confirmPassword, setConfirmPassword, showConfirmPassword, setShowConfirmPassword, "Confirm new password")}
 
           <Pressable style={[styles.saveButton, loading && { opacity: 0.65 }]} onPress={handleSave} disabled={loading}>
-            {loading ? <ActivityIndicator color={theme.buttonText} /> : <Text style={styles.saveButtonText}>Save Changes</Text>}
+            {loading ? (
+              <ActivityIndicator color={theme.buttonText} />
+            ) : (
+              <View style={{ flexDirection: "row", alignItems: "center", gap: 8 }}>
+                <Ionicons name="checkmark-circle-outline" size={20} color={theme.buttonText} />
+                <Text style={styles.saveButtonText}>Save Changes</Text>
+              </View>
+            )}
           </Pressable>
           <Pressable style={styles.cancelButton} onPress={() => navigation.goBack()} disabled={loading}>
             <Text style={styles.cancelButtonText}>Cancel</Text>
