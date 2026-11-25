@@ -559,7 +559,7 @@ export default function ChatsScreen({ navigation }) {
         {/* Header */}
         <View style={styles.header}>
           <View>
-            <ChattyLogo compact horizontal />
+            <ChattyLogo small horizontal />
             <Text style={styles.subtitle}>Your conversations</Text>
           </View>
 

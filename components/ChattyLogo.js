@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import { ThemeContext } from "../context/ThemeContext";
 
-export default function ChattyLogo({ compact = false, horizontal = false }) {
+export default function ChattyLogo({ compact = false, horizontal = false, small = false }) {
   const { theme } = useContext(ThemeContext);
 
   return (
@@ -13,6 +13,7 @@ export default function ChattyLogo({ compact = false, horizontal = false }) {
         style={[
           styles.mark,
           compact && styles.markCompact,
+          small && styles.markSmall,
           horizontal && styles.markHorizontal,
           {
             backgroundColor: theme.primary,
@@ -22,7 +23,7 @@ export default function ChattyLogo({ compact = false, horizontal = false }) {
       >
         <Ionicons
           name="chatbubbles"
-          size={compact ? 28 : 34}
+          size={small ? 18 : compact ? 28 : 34}
           color="#FFFFFF"
         />
       </View>
@@ -30,6 +31,7 @@ export default function ChattyLogo({ compact = false, horizontal = false }) {
         style={[
           styles.wordmark,
           compact && styles.wordmarkCompact,
+          small && styles.wordmarkSmall,
           { color: theme.text },
         ]}
       >
@@ -60,6 +62,12 @@ const styles = StyleSheet.create({
     height: 58,
     borderRadius: 19,
   },
+  markSmall: {
+    width: 40,
+    height: 40,
+    borderRadius: 13,
+    borderWidth: 1,
+  },
   markHorizontal: {
     marginBottom: 0,
     marginRight: 10,
@@ -71,5 +79,9 @@ const styles = StyleSheet.create({
   },
   wordmarkCompact: {
     fontSize: 30,
+  },
+  wordmarkSmall: {
+    fontSize: 24,
+    letterSpacing: 0,
   },
 });
